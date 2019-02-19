@@ -1,3 +1,6 @@
+import fetch from 'cross-fetch'
+import 'babel-polyfill'
+
 let idCounter = 100;
 export const addTodo = (text) => ({
   type: "ADD_TODO",
@@ -20,3 +23,36 @@ export const visiblityFilters = ({
   COMPLETED: "COMPLETED",
   ACTIVE: "ACTIVE"
 });
+
+
+export const REQUEST_USER = 'REQUEST_USER'
+function requestUser (userName) {
+  return{
+    type: 'REQUEST_USER',
+    userName,
+  }
+}
+
+export const RESIVE_USER = 'RESIVE_USER'
+function resiveUser(userName,json) {
+  return {
+    type: 'RESIVE_USER',
+    userName,
+    userData: json.data.children.map(child => child.data),
+    receivedAt: Date.now()
+  }
+}
+
+export function fetchPost(userName) {
+  return function (dispatch) {
+    dispatch(requestUser(userName));
+
+    return fetch(`https://api.github.com/users/${userName}`)
+            .then(
+              res => res.json(),
+              err => console.log(`an err accourd : ${err}`)
+            ).then(
+              json => dispatch(resiveUser(userName, json)) 
+            )
+  }
+}

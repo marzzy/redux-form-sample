@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTodo, toggleTodo} from '../actions'
+import { addTodo } from '../actions'
 
 const ShowItems = ({ myState, dispatchAdd }) => {
   return (
