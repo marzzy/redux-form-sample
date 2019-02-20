@@ -10,7 +10,7 @@ const fetchUserReducer = (state = { isFetched: false, items:{},name: '' },action
     return Object.assign({},state,{
       isFetched: true,
       name: action.userName,
-      items: action.post
+      items: action.userData
     });
   } else {
     return state

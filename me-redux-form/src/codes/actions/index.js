@@ -34,11 +34,11 @@ function requestUser (userName) {
 }
 
 export const RESIVE_USER = 'RESIVE_USER'
-function resiveUser(userName,json) {
+function resiveUser(userName,thejson) {
   return {
     type: 'RESIVE_USER',
     userName,
-    userData: json.data.children.map(child => child.data),
+    userData: thejson,
     receivedAt: Date.now()
   }
 }

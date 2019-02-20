@@ -6,10 +6,11 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './codes/reducers';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { addTodo, toggleTodo, visiblityFilter, fetchPost } from './codes/actions'
+import { addTodo, toggleTodo, visiblityFilter } from './codes/actions'
 import './index.css';
 import App from './codes/containers/App';
-import AnotherApp from './codes/containers/AnotherApp';
+import GitUser from './codes/containers/AnotherApp';
+import FormPage from './codes/containers/FormPage'
 
 const loggerMiddleware = createLogger();
 
@@ -40,12 +41,18 @@ const Root = ({store}) => {
                     صفحه دوم
                   </Link>
                 </li>
+                <li>
+                  <Link to="/myform">
+                      صفحه فرم
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>
 
         <Route exact path="/" component={App} />
-        <Route path="/another" component={AnotherApp} />
+        <Route path="/another" component={GitUser} />
+        <Route path="/myform" component={FormPage} />
       </div>
     </Router>
   </Provider>
@@ -63,5 +70,5 @@ store.dispatch(toggleTodo(101));
 store.dispatch(visiblityFilter('COMPLETED'));
 
 
-store.dispatch(fetchPost('marzzy'));
-store.dispatch(fetchPost('ali'));
+// store.dispatch(fetchPost('marzzy'));
+// store.dispatch(fetchPost('ali'));
