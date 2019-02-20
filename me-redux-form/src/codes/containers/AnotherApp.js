@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPost } from '../actions'
+// import { fetchPost } from '../sagas'
+import { requestUser } from '../actions'
+
 
 
 class GitUser extends React.Component{
   componentDidMount(){
-    this.props.fetchTheUser();
+    this.props.fetchTheUser('marzzy');
   }
   
   render(){
@@ -25,7 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTheUser: () => dispatch(fetchPost('marzzy'))
+  fetchTheUser: () => dispatch(requestUser)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GitUser)
