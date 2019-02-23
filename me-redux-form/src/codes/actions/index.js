@@ -26,7 +26,7 @@ export const visiblityFilters = ({
 
 
 export const REQUEST_USER = 'REQUEST_USER'
-export function requestUser (userName) {
+export const requestUser = (userName) => {
   return{
     type: 'REQUEST_USER',
     userName,
@@ -34,7 +34,7 @@ export function requestUser (userName) {
 }
 
 export const RESIVE_USER = 'RESIVE_USER'
-export function resiveUser(userName,thejson) {
+export const resiveUser = (userName,thejson) => {
   return {
     type: 'RESIVE_USER',
     userName,

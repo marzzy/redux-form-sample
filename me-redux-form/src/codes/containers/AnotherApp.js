@@ -7,16 +7,17 @@ import { requestUser } from '../actions'
 
 class GitUser extends React.Component{
   componentDidMount(){
-    this.props.fetchTheUser('marzzy');
+    // this.props.fetchTheUser('amir')
   }
   
-  render(){
+  render() {
     // const Loading = (<p>صبر کنید ...</p>);
     const { theUser } = this.props;
-    return(
+    return (
       <>
-        <p>{theUser.name}</p>
-        <img src={theUser.items.avatar_url} alt={`img of ${theUser.name}`} />
+        <p>hiiii</p>
+        <p>{theUser.name.userName}</p>
+        {/* <img src={theUser.items.avatar_url} alt={`img of ${theUser.name}`} /> */}
       </>
     );
   }

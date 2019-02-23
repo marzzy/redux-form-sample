@@ -1,5 +1,6 @@
+// import { put, takeLatest } from 'redux-saga/effects';
 import { put, takeLatest, all } from 'redux-saga/effects';
-import { REQUEST_USER, RESIVE_USER } from '../actions'
+import { resiveUser } from '../actions'
 
 
 function* fetchPost(userName) {
@@ -7,14 +8,14 @@ function* fetchPost(userName) {
   const json = yield fetch(`https://api.github.com/users/${userName}`)
       .then(
         response => response.json(),
-        err => console.log(`an err accourd : ${err}`)
+        // err => console.log(`an err accourd : ${err}`)
       )
 
-  yield put({ type: RESIVE_USER, json: json.articles, });
+  yield put(resiveUser(userName, json));
 }
 
 function* actionWatcher() {
-  yield takeLatest(REQUEST_USER, fetchPost)
+  yield takeLatest('REQUEST_USER', fetchPost);
 }
 
 export default function* rootSaga() {

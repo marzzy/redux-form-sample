@@ -8,7 +8,8 @@ import createSagaMiddleware from 'redux-saga'
 import rootReducer from './codes/reducers';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { addTodo, toggleTodo, visiblityFilter } from './codes/actions'
+// import { addTodo, toggleTodo, visiblityFilter } from './codes/actions'
+import { addTodo, toggleTodo, visiblityFilter, requestUser } from './codes/actions'
 import './index.css';
 import App from './codes/containers/App';
 import GitUser from './codes/containers/AnotherApp';
@@ -81,5 +82,5 @@ store.dispatch(toggleTodo(101));
 store.dispatch(visiblityFilter('COMPLETED'));
 
 
-// store.dispatch(fetchPost('marzzy'));
+store.dispatch(requestUser('fateme'));
 // store.dispatch(fetchPost('ali'));
